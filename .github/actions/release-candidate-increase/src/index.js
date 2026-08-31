@@ -6,7 +6,7 @@ async function main() {
 
     const gh = github.getOctokit(token);
     const owner = github.context.repo.owner;
-    const repo = github.context.repo.repo;
+    const name = github.context.repo.repo;
 
     const rcTagRegex = /^v?(\d+\.d+\.\d+)\-rc(\d+)$/g;
 
@@ -45,7 +45,7 @@ async function main() {
         }
     `, {
         owner,
-        repo
+        name
     });
 
     if (tagQuery.repository.refs.nodes.length < 1) {

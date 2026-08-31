@@ -33672,7 +33672,7 @@ async function main() {
 
     const gh = getOctokit(token);
     const owner = context.repo.owner;
-    const repo = context.repo.repo;
+    const name = context.repo.repo;
 
     const rcTagRegex = /^v?(\d+\.d+\.\d+)\-rc(\d+)$/g;
 
@@ -33711,7 +33711,7 @@ async function main() {
         }
     `, {
         owner,
-        repo
+        name
     });
 
     if (tagQuery.repository.refs.nodes.length < 1) {
