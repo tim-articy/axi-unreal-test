@@ -16,7 +16,7 @@ jobs:
       - name: Get latest tag
         id: latest_tag
         run: |
-          $VERSION=git describe --tags --abbrev=0
+          export VERSION=`git describe --tags --abbrev=0`
           echo "tag=$VERSION" >> "$GITHUB_OUTPUT"
           echo "Latest version is $VERSION" >> $GITHUB_STEP_SUMMARY
 
