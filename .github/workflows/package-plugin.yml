@@ -7,6 +7,7 @@ on:
 jobs:
   tag_next_version:
     name: Tag next version number
+    runs-on: [ubuntu-slim]
 
     steps:
       - name: Checkout repository
@@ -55,7 +56,6 @@ jobs:
   trigger_jenkins:
     name: Trigger packaging job on Jenkins
     runs-on: [self-hosted]
-    fail-fast: true
 
     steps:
       - run: |
