@@ -8,6 +8,8 @@ jobs:
   tag_next_version:
     name: Tag next version number
     runs-on: [ubuntu-latest]
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -54,11 +56,11 @@ jobs:
       - name: Create RC tag
         uses: rickstaa/action-create-tag@v1
         with:
-          github_token: ${{ github.token }}
           tag: ${{ env.NEXT_VERSION }}
 
   trigger_jenkins:
     name: Trigger packaging job on Jenkins
+    needs: [tag_next_version]
     runs-on: [self-hosted]
 
     steps:
