@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          fetch-tags: true
 
       - name: Get latest tag
         id: latest_tag
