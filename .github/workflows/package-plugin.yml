@@ -11,6 +11,9 @@ jobs:
     permissions:
       contents: write
 
+    outputs:
+      next_version: ${{ env.NEXT_VERSION }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -64,5 +67,7 @@ jobs:
     runs-on: [ubuntu-slim]
 
     steps:
-      - run: |
+      - env:
+          NEXT_VERSION: ${{ needs.tag_next_version.outputs.next_version }}
+        run: |
           echo "Go Jenkins! Build ${{ env.NEXT_VERSION }}"
