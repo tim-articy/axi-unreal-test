@@ -61,8 +61,8 @@ jobs:
   trigger_jenkins:
     name: Trigger packaging job on Jenkins
     needs: [tag_next_version]
-    runs-on: [self-hosted]
+    runs-on: [ubuntu-slim]
 
     steps:
       - run: |
-          echo "Not calling Jenkins yet"
+          echo "Go Jenkins! Build ${{ env.NEXT_VERSION }}"
